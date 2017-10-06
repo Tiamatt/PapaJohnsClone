@@ -1,0 +1,8 @@
+<ul class="wrapper_M">
+  <li 
+  *ngFor="let link of navArr" 
+  (click)="onChangeSelection(link.id)" 
+  [ngClass]="{active: link.id == selectedLinkId}">
+    <a>{{link.name}}</a>
+  </li>
+</ul>

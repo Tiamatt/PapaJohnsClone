@@ -1,0 +1,19 @@
+/*
+________ FONTS ________
+font-family: 'Lobster', cursive;
+font-family: 'PT Sans Narrow', sans-serif;
+font-family: 'Anton', sans-serif;    ???delete???
+
+________ COLORS ________
+green: #148F6A;
+
+*/
+
+h3{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 800;
+}
+
+.wrapper_M{
+    margin: 20px 10px 10px 10px;
+}

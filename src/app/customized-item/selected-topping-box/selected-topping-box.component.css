@@ -1,0 +1,27 @@
+.box_M{
+    /* max-width: 200px; */
+    height: 44px;
+    line-height: 40px;
+    display: inline-block;
+    margin: 0.5em;
+    color: #333;
+    background: #fff;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid #e6e6e6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+img{
+    height: 24px;
+    padding: 0 5px;
+}
+/* span{
+    padding-right: 4px;
+} */
+i{
+    padding: 0 12px;
+    font-size: 22px;
+}

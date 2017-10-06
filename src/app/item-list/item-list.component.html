@@ -1,0 +1,6 @@
+<app-carousel 
+*ngIf="categoryId == null"
+[imgUrlArr]="carouselImageUrlArr"></app-carousel>
+
+<h3>{{title | uppercase}}</h3>
+<app-item-box *ngFor="let singleItem of itemArr" [item]="singleItem"></app-item-box>

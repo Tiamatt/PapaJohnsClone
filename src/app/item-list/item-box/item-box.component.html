@@ -1,0 +1,14 @@
+<!-- Item's image and info -->
+<div class="card">
+  <img class="card-img-top" [src]="imageUrl" [alt]="item.name">
+  <div class="card-body">
+    <button type="button" class="btn btn-primary" (click)="onSelect()">{{buttonName}}</button>
+    <app-price-box [price]="item.price"></app-price-box>
+    <h3>{{item.name}}</h3>
+    <p class="card-text">{{item.description}}</p>
+  </div>
+</div>
+
+<!-- "Add to Cart" Modal dialog -->
+<app-add-to-cart-modal [selectedItem]="item"></app-add-to-cart-modal>
+<button [id]="'openModalButton'+item.id" hidden data-toggle="modal" [attr.data-target]="'#addToCartModal'+item.id">Open Modal (hidden)</button>

@@ -1,0 +1,14 @@
+<!-- 
+___________ Basic Info __________ 
+Radio btn, single selection only
+-->
+
+<h3 class="wrapper_M" >{{question.questionCategoryName}}</h3>
+<div class="questionBox_M" 
+*ngFor="let item of question.allowedQuestionList" 
+[ngClass]="{selectedQuestion_M : item.id == question.selectedQuestionId}"
+(click)="onChangeSelection(item.id)">
+  <input type="radio" [name]="radioName" [value]="item.id" [id]="item.id" [checked]="item.id == selectedQuestionId">
+  <label [for]="item.id" class="label_M">{{item.name}}</label>
+</div>
+

@@ -1,0 +1,27 @@
+<!-- Item name -->
+<h3 class="wrapper_M">{{title | uppercase}}</h3>
+
+<!-- Selected topping list -->
+<app-selected-topping-box 
+*ngFor="let st of selectedToppingArr" 
+[selectedTopping] = "st"
+(click)="onRemoveTopping(st.id)">
+</app-selected-topping-box>
+
+<!-- Modal dialog when user selected more than 10 toppings -->
+<app-topping-limit-modal></app-topping-limit-modal>
+<button id="openModalButton" hidden data-toggle="modal" data-target="#exampleModal">Open Modal (hidden)</button>
+
+<!-- Minor nav menu (steps) -->
+<app-customized-item-nav></app-customized-item-nav>
+
+<!-- Questions/Toppings -->
+<div *ngIf="questionArr != null">
+    <app-question-box *ngFor="let q of questionArr" [question]="q"></app-question-box>
+    <div class="clearfix"></div>
+    <h3 class="wrapper_M" *ngIf="navId == 1">Additional Cheese Toppings</h3>
+    <app-topping-box *ngFor="let t of toppingArr" [topping]="t" (click)="onAddTopping(t)" ></app-topping-box>
+</div>
+
+<!-- Footer with "Previous", "Next", "Add to Card" buttons  -->
+<app-customized-item-footer [currentNavId]="navId"></app-customized-item-footer>

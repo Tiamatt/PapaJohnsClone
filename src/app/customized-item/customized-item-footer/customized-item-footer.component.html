@@ -1,0 +1,22 @@
+<div class="footer_M">
+  <div class="content_M">
+  
+    <!-- "Previous" -->
+    <p id="previous_M" class="inline_M" 
+    *ngIf="currentNavId > 0" 
+    (click)="onPreviousNav()">Previous</p>
+
+    <!-- "Next" -->
+    <button type="button" class="btn btn-success inline_M" 
+    *ngIf="currentNavId != 3"
+    (click)="onNextNav()">Next</button>
+
+    <!-- "Quantity" ddl -->
+    <app-quantity-dropdown [selectedNumber]="1" *ngIf="currentNavId == 3"></app-quantity-dropdown>   
+
+    <!-- "Add to Cart" -->
+    <button type="button" class="btn btn-danger inline_M" 
+    *ngIf="currentNavId == 3">Add to Cart</button>
+
+  </div>
+</div>

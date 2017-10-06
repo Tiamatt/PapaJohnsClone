@@ -1,0 +1,27 @@
+.questionBox_M{
+    max-width: 200px;
+    min-width: 120px;
+    height: 40px;
+    line-height: 36px;
+    display: inline-block;
+    margin: 0.5em;
+    color: #333;
+    background-color: #fff;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px solid #e6e6e6;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.questionBox_M:hover, .selectedQuestion_M{
+    border: 2px solid #148F6A;    
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(125,119,125,0.79);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(125,119,125,0.79);
+    box-shadow: 0px 0px 6px 1px rgba(125,119,125,0.79);
+}
+    .questionBox_M input{
+        display: none;
+    }

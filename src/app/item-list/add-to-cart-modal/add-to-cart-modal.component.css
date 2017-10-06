@@ -1,0 +1,12 @@
+.modal{
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+.modal-title{
+    font-weight: 700;
+}
+img{
+    width: 100%;
+}
+.description_M{
+    padding: 10px 0;
+}

@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal fade" [id]="'addToCartModal'+selectedItem.id" tabindex="-1" role="dialog" [attr.aria-labelledby]="'addToCartModalLabel'+selectedItem.id" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" [id]="'addToCartModalLabel'+selectedItem.id">{{selectedItem.name}}</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img [src]="imageUrl" [alt]="selectedItem.name">
+            <p class="description_M">{{selectedItem.description}}</p>
+            <app-quantity-dropdown [selectedNumber]="1"></app-quantity-dropdown>
+            <app-price-box [price]="selectedItem.price"></app-price-box>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger">Add to cart</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+.card{
+    width: 20rem;
+    display: inline-flex;
+    height: 440px;
+    margin: 10px;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+    button{
+        width: 70%;
+        margin: 0 auto;
+        background: #148F6A;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    h3{        
+        font-weight: 700;
+        margin-top: 10px;
+    }
+
+    @media screen and (max-width: 660px) {
+        .card {
+            margin: 10px 0;
+            width: 100%;
+            height: auto;
+        }
+    }

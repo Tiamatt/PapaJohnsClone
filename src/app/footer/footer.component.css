@@ -1,0 +1,12 @@
+footer{
+    background-color: #AB131B;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 30px;
+}
+p{
+    text-align: center;
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
+}

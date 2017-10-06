@@ -1,0 +1,24 @@
+.footer_M{
+    height: 60px;
+    background-color: #E1DEDE;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.content_M{
+    width: 300px;
+    margin: 0 auto;
+}
+.inline_M{
+    display: inline;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#previous_M{
+    text-decoration: underline;
+    font-weight: 700;
+}
+.btn-success{
+    background-color: #148F6A;
+    border-color: #148F6A;
+}
