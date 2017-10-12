@@ -8,6 +8,7 @@ import { ICustomizedItem } from '../shared/models/ICustomizedItem.model';
 import { IQuestion } from '../shared/models/IQuestion.model';
 import { ITopping } from '../shared/models/ITopping.model';
 import { IIdName } from '../shared/models/IIdName.model';
+import { IParamsToRecalculatePrice } from '../shared/models/IParamsToRecalculatePrice.model';
 
 @Component({
   selector: 'app-customized-item',
@@ -23,6 +24,11 @@ export class CustomizedItemComponent implements OnInit {
   questionArr: IQuestion[] = [];
   toppingArr: ITopping[] = [];
   selectedToppingArr: IIdName[] = [];
+  paramsToRecalculatePrice: IParamsToRecalculatePrice = {
+    itemId: -1,
+    sizeId: -1,
+    countTopping: 0
+   };
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -39,6 +45,7 @@ export class CustomizedItemComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params: Params) => {
         this.itemId = params['itemId'];
+        this.paramsToRecalculatePrice.itemId = this.itemId;
         this.getInitialData();
       }
     );
@@ -50,7 +57,7 @@ export class CustomizedItemComponent implements OnInit {
       (_data: ICustomizedItem) => {
         this.itemData = _data;
         this.title = _data.itemName;
-        this.assignQuestionArrAndToppingArr();
+        this.assignQuestionArrAndToppingArr();        
       },
       (_error) => console.log(_error)
     );
@@ -58,17 +65,21 @@ export class CustomizedItemComponent implements OnInit {
     // assign selectedToppingArr
     this.apiService.getSelectedToppingList(this.itemId).subscribe(
       (_data: IIdName[]) => {
-        this.selectedToppingArr = _data;
+        if(_data!=null)
+          this.selectedToppingArr = _data;
       },
       (_error) => console.log(_error)
     );
   }
 
   listenVariables(){
-    this.variableListenerService.customizedItemNavSelectedIdListenet.subscribe(
+    this.variableListenerService.customizedItemNavSelectedIdListener.subscribe(
       (_navId: number) => { 
         this.navId = _navId;
         this.assignQuestionArrAndToppingArr();
+        this.paramsToRecalculatePrice.countTopping = this.selectedToppingArr.length;
+        console.log(this.paramsToRecalculatePrice);
+        this.variableListenerService.paramsToRecalculatePriceListener.next(this.paramsToRecalculatePrice);
       }
     );
   }
@@ -85,6 +96,10 @@ export class CustomizedItemComponent implements OnInit {
           this.questionArr.push(q);
         else if (this.navId == 1 && q.questionCategoryId == 5) 
           this.questionArr.push(q);
+
+        // get pre-selected sizeId  
+        if(q.questionCategoryId == 2)
+          this.paramsToRecalculatePrice.sizeId = q.selectedQuestionId;  
       }
       // get topping for selected nav
       for(let t of this.itemData.toppingList)
@@ -105,20 +120,17 @@ export class CustomizedItemComponent implements OnInit {
     if(this.selectedToppingArr.length > 9 )
       document.getElementById("openModalButton").click();
     else
+    {
       this.selectedToppingArr.push(newTopping);
+      this.paramsToRecalculatePrice.countTopping = this.selectedToppingArr.length;
+      this.variableListenerService.paramsToRecalculatePriceListener.next(this.paramsToRecalculatePrice);
+    }
   }
 
-  onRemoveTopping(_selectedToppingId: number)
+  onRemoveTopping(_selectedToppingIndex: number)
   { 
-    let i = 0; // find and delete only first item
-    for(let t of this.selectedToppingArr)
-    {
-      if(t.id == _selectedToppingId && i== 0)
-      {
-        i++;
-        let index:number = this.selectedToppingArr.indexOf(t);
-        this.selectedToppingArr.splice(index, 1);
-      }
-    }
+      this.selectedToppingArr.splice(_selectedToppingIndex, 1);
+      this.paramsToRecalculatePrice.countTopping = this.selectedToppingArr.length;
+      this.variableListenerService.paramsToRecalculatePriceListener.next(this.paramsToRecalculatePrice);  
   }
 }

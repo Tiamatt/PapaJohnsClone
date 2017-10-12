@@ -25,6 +25,8 @@ import { ToppingLimitModalComponent } from './customized-item/topping-limit-moda
 import { AddToCartModalComponent } from './item-list/add-to-cart-modal/add-to-cart-modal.component';
 import { QuantityDropdownComponent } from './shared/components/quantity-dropdown/quantity-dropdown.component';
 import { PriceBoxComponent } from './shared/components/price-box/price-box.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { PriceBoxComponent } from './shared/components/price-box/price-box.compo
     ToppingLimitModalComponent,
     AddToCartModalComponent,
     QuantityDropdownComponent,
-    PriceBoxComponent
+    PriceBoxComponent,
+    ShoppingCartComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

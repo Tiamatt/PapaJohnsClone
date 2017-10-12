@@ -3,9 +3,9 @@
 
 <!-- Selected topping list -->
 <app-selected-topping-box 
-*ngFor="let st of selectedToppingArr" 
+*ngFor="let st of selectedToppingArr; let i=index" 
 [selectedTopping] = "st"
-(click)="onRemoveTopping(st.id)">
+(click)="onRemoveTopping(i)">
 </app-selected-topping-box>
 
 <!-- Modal dialog when user selected more than 10 toppings -->

@@ -15,7 +15,7 @@
             <app-price-box [price]="selectedItem.price"></app-price-box>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger">Add to cart</button>
+          <button type="button" class="btn btn-danger" (click)="onAddToShoppingCart()">Add to cart</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
