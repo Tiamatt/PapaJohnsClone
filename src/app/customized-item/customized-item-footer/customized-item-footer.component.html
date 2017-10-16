@@ -12,11 +12,11 @@
     (click)="onNextNav()">Next</button>
 
     <!-- "Quantity" ddl -->
-    <app-quantity-dropdown [selectedNumber]="1" *ngIf="currentNavId == 3"></app-quantity-dropdown>   
+    <app-quantity-dropdown *ngIf="currentNavId == 3"
+    (onQuantityChangedOutput)="onQuantityChangedOutput($event)" [initialQuantity]="1"></app-quantity-dropdown>
 
     <!-- "Add to Cart" -->
     <button type="button" class="btn btn-danger inline_M" 
     *ngIf="currentNavId == 3" (click)="onAddToCart()">Add to Cart</button>
-
   </div>
 </div>

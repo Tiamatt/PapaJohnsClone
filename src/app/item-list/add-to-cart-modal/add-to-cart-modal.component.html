@@ -9,13 +9,13 @@
           </button>
         </div>
         <div class="modal-body">
-            <img [src]="imageUrl" [alt]="selectedItem.name">
+            <img [src]="'../../../assets/itemImages/'+ selectedItem.itemCategoryId + '_' + selectedItem.id + '.jpg'" [alt]="selectedItem.name">
             <p class="description_M">{{selectedItem.description}}</p>
-            <app-quantity-dropdown [selectedNumber]="1"></app-quantity-dropdown>
+            <app-quantity-dropdown (onQuantityChangedOutput)="onQuantityChangedOutput($event)" [initialQuantity]="1"></app-quantity-dropdown>
             <app-price-box [price]="selectedItem.price"></app-price-box>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" (click)="onAddToShoppingCart()">Add to cart</button>
+          <button type="button" class="btn btn-danger" (click)="onAddToShoppingCart()" data-dismiss="modal">Add to cart</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>

@@ -9,6 +9,8 @@ import { IQuestion } from '../shared/models/IQuestion.model';
 import { ITopping } from '../shared/models/ITopping.model';
 import { IIdName } from '../shared/models/IIdName.model';
 import { IParamsToRecalculatePrice } from '../shared/models/IParamsToRecalculatePrice.model';
+import { IShoppingItem } from '../shared/models/IShoppingItem.model';
+import { HelperService } from '../shared/services/helper.service';
 
 @Component({
   selector: 'app-customized-item',
@@ -17,35 +19,35 @@ import { IParamsToRecalculatePrice } from '../shared/models/IParamsToRecalculate
 })
 
 export class CustomizedItemComponent implements OnInit {
-  title: string = "Waiting for API...";
-  itemId: number;
-  navId: number;
-  itemData: ICustomizedItem;
-  questionArr: IQuestion[] = [];
-  toppingArr: ITopping[] = [];
-  selectedToppingArr: IIdName[] = [];
-  paramsToRecalculatePrice: IParamsToRecalculatePrice = {
-    itemId: -1,
-    sizeId: -1,
-    countTopping: 0
-   };
+  title: string = "Waiting for API..."; // initial title. Will change to itemName after calling API
+  itemIdFromQueryString: number; // get itemId from router url
+  navId: number; // 0 - "Size&Crust", 1- "Cheeses", 2 - "Meats", 3 -"Veggies"
+  itemData: ICustomizedItem; // get from API
+  questionArr: IQuestion[] = []; // get from API, all questions
+  toppingArr: ITopping[] = []; // get from API, all toppings
+  selectedToppingArr: IIdName[] = []; // get from API, selected toppings
+  selectedSize: number; // get from API
+  selectedQuantity: number = 1;
+  recalculatedPrice: number;
+
+  shoppingItemArr: IShoppingItem[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
-    private variableListenerService: VariableListenerService
+    private variableListenerService: VariableListenerService,
+    private helperService: HelperService
   ) { } 
   
   ngOnInit() {
-    this.getItemIdFromUrl();
-    this.listenVariables();
+    this.getItemIdFromUrl(); // calls getInitialData()
+    this.listenVariables();  // calls assignQuestionArrAndToppingArr()
   }
 
   getItemIdFromUrl(){
     this.activatedRoute.params.subscribe(
       (params: Params) => {
-        this.itemId = params['itemId'];
-        this.paramsToRecalculatePrice.itemId = this.itemId;
+        this.itemIdFromQueryString = params['itemId'];
         this.getInitialData();
       }
     );
@@ -53,7 +55,7 @@ export class CustomizedItemComponent implements OnInit {
 
   getInitialData(){    
     // assign title & itemData
-    this.apiService.getCustomizedItem(this.itemId).subscribe(
+    this.apiService.getCustomizedItem(this.itemIdFromQueryString).subscribe(
       (_data: ICustomizedItem) => {
         this.itemData = _data;
         this.title = _data.itemName;
@@ -63,7 +65,7 @@ export class CustomizedItemComponent implements OnInit {
     );
 
     // assign selectedToppingArr
-    this.apiService.getSelectedToppingList(this.itemId).subscribe(
+    this.apiService.getSelectedToppingList(this.itemIdFromQueryString).subscribe(
       (_data: IIdName[]) => {
         if(_data!=null)
           this.selectedToppingArr = _data;
@@ -73,13 +75,17 @@ export class CustomizedItemComponent implements OnInit {
   }
 
   listenVariables(){
-    this.variableListenerService.customizedItemNavSelectedIdListener.subscribe(
-      (_navId: number) => { 
+    // lesten how navigation is changing // "Size&Crust", "Cheeses", "Meats", "Veggies"
+    this.variableListenerService.customizedItemNavIdListener.subscribe(
+      (_navId: number) => {
         this.navId = _navId;
         this.assignQuestionArrAndToppingArr();
-        this.paramsToRecalculatePrice.countTopping = this.selectedToppingArr.length;
-        console.log(this.paramsToRecalculatePrice);
-        this.variableListenerService.paramsToRecalculatePriceListener.next(this.paramsToRecalculatePrice);
+      }
+    );
+    // listen how shoppingItemArr changes
+    this.variableListenerService.shoppingItemArrListener.subscribe(
+      (_params: IShoppingItem[]) => {
+        this.shoppingItemArr = _params;        
       }
     );
   }
@@ -99,7 +105,7 @@ export class CustomizedItemComponent implements OnInit {
 
         // get pre-selected sizeId  
         if(q.questionCategoryId == 2)
-          this.paramsToRecalculatePrice.sizeId = q.selectedQuestionId;  
+          this.selectedSize = q.selectedQuestionId;  
       }
       // get topping for selected nav
       for(let t of this.itemData.toppingList)
@@ -122,15 +128,60 @@ export class CustomizedItemComponent implements OnInit {
     else
     {
       this.selectedToppingArr.push(newTopping);
-      this.paramsToRecalculatePrice.countTopping = this.selectedToppingArr.length;
-      this.variableListenerService.paramsToRecalculatePriceListener.next(this.paramsToRecalculatePrice);
     }
   }
 
-  onRemoveTopping(_selectedToppingIndex: number)
-  { 
+  onRemoveTopping(_selectedToppingIndex: number){ 
       this.selectedToppingArr.splice(_selectedToppingIndex, 1);
-      this.paramsToRecalculatePrice.countTopping = this.selectedToppingArr.length;
-      this.variableListenerService.paramsToRecalculatePriceListener.next(this.paramsToRecalculatePrice);  
   }
+
+  onCustomizedItemFooterOutput($event){
+    if($event.isAddToCartChecked == true)
+    {
+      this.selectedQuantity = $event.quantity;
+      this.onRecalculatePrice(); // calls onAddToShoppingList();
+    }
+  }
+
+  onRecalculatePrice()
+  {
+    let paramsToRecalculatePrice = {
+        itemId: this.itemData.itemId,
+        sizeId: this.selectedSize,
+        countTopping: this.selectedToppingArr.length
+       };
+    this.apiService.getRecalculatedPrice(paramsToRecalculatePrice).subscribe(
+      (_data: number) => {
+        this.recalculatedPrice = _data;
+        this.onAddToShoppingList();
+      },
+      (_error) => console.log(_error)
+    );
+  }
+
+  onAddToShoppingList()
+  {
+    let shoppingItem: IShoppingItem = {
+      itemId: this.itemData.itemId,
+      itemGuid: this.helperService.generateGuid(),
+      itemCategoryId: this.itemData.itemCategoryId,
+      name: this.itemData.itemName,
+      quantity: (this.selectedQuantity == null)? 1: this.selectedQuantity,
+      price: this.recalculatedPrice,
+      description: this.getDescription()
+    };
+    this.shoppingItemArr.push(shoppingItem);
+    this.variableListenerService.shoppingItemArrListener.next(this.shoppingItemArr);
+    alert("Item added to your shopping cart");
+  }
+
+  getDescription(){
+    let desc = '';
+    for(var t of this.selectedToppingArr)
+    {
+      desc += t.name + ' | '; 
+    }
+    return desc;
+  }
+
 }

@@ -24,11 +24,10 @@
     text-decoration: underline;
 }
 .fa-shopping-cart{
-    color: #fff;
     text-shadow: 2px 2px #3E3B3B;
-    font-size: 32px;
+    font-size: 22px;
 }
-.fa-shopping-cart:hover{
-    color: #148F6A;
-    cursor: pointer;
+span.countShoppingItems_M{
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 22px;
 }

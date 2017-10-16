@@ -2,3 +2,7 @@
     display: inline;
     cursor: pointer;
 }
+.btn{
+    width: 80px;
+    font-family: 'PT Sans Narrow', sans-serif;
+}

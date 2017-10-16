@@ -1,3 +1,35 @@
-<p>
-  shopping-cart works!
-</p>
+<!-- Item name -->
+<h3 class="wrapper_M">{{'Your shopping cart' | uppercase}}</h3>
+
+<h4 *ngIf="shoppingItemArr.length==0" class="wrapper_M text-danger">Nothing in the shoppping cart</h4>
+
+
+<div class="container" class="wrapper_M">
+    <div class="row" *ngFor="let item of shoppingItemArr">
+        <div class="col-md-auto">
+            <img [src]="'../../assets/itemImages/'+ item.itemCategoryId + '_' + item.itemId + '.jpg'"
+            [alt]="item.name">
+        </div>
+        <div class="col-5">
+            <b>{{item.name}}</b>
+            <p *ngIf="item.description != ''">{{item.description}}</p>
+        </div>
+        <div class="col-md-auto">
+            <app-quantity-dropdown (click)="onQuantityDropDownClick(item)" (onQuantityChangedOutput)="onQuantityChangedOutput($event)" [initialQuantity]="item.quantity"></app-quantity-dropdown>
+            <app-price-box [price]="item.price*item.quantity"></app-price-box>
+            <button type="button" class="btn btn-dark" (click)="onRemoveItem(item)">x</button>
+        </div>
+    </div>
+</div>
+<div class="container" class="wrapper_M">
+        <div class="row">
+          <div class="col-2 grey_M"><h4>Subtotal:</h4></div>
+          <div class="col-4 grey_M"><h4>{{subtotal | currency:'USD':true}}</h4></div>
+          <div class="w-100"></div>
+          <div class="col-2 grey_M"><h4>Estimated tax:</h4></div>
+          <div class="col-4 grey_M"><h4>{{subtotal*0.05 | currency:'USD':true}}</h4></div>
+          <div class="w-100"></div>
+          <div class="col-2"><h4>Total:</h4></div>
+          <div class="col-4"><h4>{{subtotal + subtotal*0.05 | currency:'USD':true}}</h4></div>
+        </div>
+      </div>

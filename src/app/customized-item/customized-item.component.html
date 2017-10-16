@@ -24,4 +24,4 @@
 </div>
 
 <!-- Footer with "Previous", "Next", "Add to Card" buttons  -->
-<app-customized-item-footer [currentNavId]="navId"></app-customized-item-footer>
+<app-customized-item-footer [currentNavId]="navId" (onCustomizedItemFooterOutput)="onCustomizedItemFooterOutput($event)"></app-customized-item-footer>

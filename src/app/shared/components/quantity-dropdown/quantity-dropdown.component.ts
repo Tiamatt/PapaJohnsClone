@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-quantity-dropdown',
@@ -6,10 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./quantity-dropdown.component.css']
 })
 export class QuantityDropdownComponent implements OnInit {
-  @Input() selectedNumber: number;
+  @Input() initialQuantity: number;
+  @Output() onQuantityChangedOutput = new EventEmitter<number>();
   quantityArr: number[] = [];
-  selectedQuantity: string = "QTY 1";
-
   constructor() { }
 
   ngOnInit() {
@@ -21,12 +20,11 @@ export class QuantityDropdownComponent implements OnInit {
     {
       this.quantityArr.push(i);
     }
-    this.selectedQuantity = "QTY " + this.selectedNumber;
   }
 
   onChangeQuantity(_quantity: number){
-    this.selectedQuantity = "QTY " + _quantity;
+    this.onQuantityChangedOutput.emit(_quantity);
+    this.initialQuantity = _quantity;
   }
-
 
 }

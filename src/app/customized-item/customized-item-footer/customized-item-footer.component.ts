@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { VariableListenerService } from '../../shared/services/variableListener.service'; 
-import { ApiService } from '../../shared/services/api.service';
-import { IParamsToRecalculatePrice } from '../../shared/models/IParamsToRecalculatePrice.model';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+// services
+import { VariableListenerService } from '../../shared/services/variableListener.service';
 
 @Component({
   selector: 'app-customized-item-footer',
@@ -10,41 +9,33 @@ import { IParamsToRecalculatePrice } from '../../shared/models/IParamsToRecalcul
 })
 export class CustomizedItemFooterComponent implements OnInit {
   @Input() currentNavId: number;
-  paramsToRecalculatePrice: IParamsToRecalculatePrice;
+  @Output() onCustomizedItemFooterOutput = new EventEmitter();
+  selectedQuantity:number;
 
   constructor(
     private variableListenerService: VariableListenerService,
-    private apiService: ApiService
   ) { }
 
   ngOnInit() {
-    this.listenVariables();
   }
 
   onPreviousNav(){
-    this.variableListenerService.customizedItemNavSelectedIdListener.next(this.currentNavId - 1);
+    this.currentNavId--;
+    this.variableListenerService.customizedItemNavIdListener.next(this.currentNavId);
   }
 
   onNextNav(){
-    this.variableListenerService.customizedItemNavSelectedIdListener.next(this.currentNavId + 1);
+    this.currentNavId++;
+    this.variableListenerService.customizedItemNavIdListener.next(this.currentNavId);
   }
 
+  // pass here _selectedQuantity and IsAddToCartChecked // kali
   onAddToCart(){
-    this.apiService.getRecalculatedPrice(this.paramsToRecalculatePrice).subscribe(
-      (_data: number) => {
-        console.log("new price");
-        console.log(_data);
-      },
-      (_error) => console.log(_error)
-    ); 
+    this.onCustomizedItemFooterOutput.emit({isAddToCartChecked: true, quantity: this.selectedQuantity});
   }
 
-  listenVariables(){
-    this.variableListenerService.paramsToRecalculatePriceListener.subscribe(
-      (_params: IParamsToRecalculatePrice) => {
-        this.paramsToRecalculatePrice = _params;
-      }
-    );
+  onQuantityChangedOutput(_selectedQuantity: number){
+    this.selectedQuantity = _selectedQuantity;
   }
 
 }

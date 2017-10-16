@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 // services
 import { ApiService } from './shared/services/api.service';
 import { VariableListenerService } from './shared/services/variableListener.service';
+import { HelperService } from './shared/services/helper.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -47,14 +48,14 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     QuantityDropdownComponent,
     PriceBoxComponent,
     ShoppingCartComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ ApiService, VariableListenerService ],
+  providers: [ ApiService, VariableListenerService, HelperService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

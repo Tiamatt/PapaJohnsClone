@@ -1,3 +1,7 @@
 .price_M.btn.disabled, .price_M.btn:disabled {
     opacity: 1;
 }
+button{
+    width: 70px;
+    font-family: 'PT Sans Narrow', sans-serif;
+}

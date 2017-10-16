@@ -18,8 +18,8 @@ export class CustomizedItemNavComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // initial value of VariableListenerService -> customizedItemNavSelectedIdListener is 0  
-    this.variableListenerService.customizedItemNavSelectedIdListener.next(0);
+    // initial value of VariableListenerService -> customizedItemNavIdListener is 0  
+    this.variableListenerService.customizedItemNavIdListener.next(0);
     this.getInitialData();
     this.listenVariables();
   }
@@ -32,7 +32,7 @@ export class CustomizedItemNavComponent implements OnInit {
   }
 
   listenVariables(){
-    this.variableListenerService.customizedItemNavSelectedIdListener.subscribe(
+    this.variableListenerService.customizedItemNavIdListener.subscribe(
       (_navId: number) => { 
         this.selectedLinkId = _navId;
       }
@@ -41,8 +41,8 @@ export class CustomizedItemNavComponent implements OnInit {
 
   onChangeSelection(_id: number){
     this.selectedLinkId = _id;
-    // assign value for VariableListenerService -> customizedItemNavSelectedIdListener
-    this.variableListenerService.customizedItemNavSelectedIdListener.next(this.selectedLinkId);   
+    // assign value for VariableListenerService -> customizedItemNavIdListener
+    this.variableListenerService.customizedItemNavIdListener.next(this.selectedLinkId);   
   }
 
   
