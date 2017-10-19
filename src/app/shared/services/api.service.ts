@@ -9,6 +9,7 @@ import { IParamsToRecalculatePrice } from '../models/IParamsToRecalculatePrice.m
 
 export class ApiService{
     // api urls
+    private apiUrl_base: string;
     private apiUrl_getItemCategoryList: string;    
     private apiUrl_getSpecialList: string;
     private apiUrl_getItemsByCategoryId: string;
@@ -23,13 +24,14 @@ export class ApiService{
         private _http: Http,
         private _router: Router
     ) {
-      this.apiUrl_getItemCategoryList = 'https://localhost:44385/api/item/categories';
-      this.apiUrl_getSpecialList = 'https://localhost:44385/api/item/specials';
-      this.apiUrl_getItemsByCategoryId = 'https://localhost:44385/api/item/items/';
-      this.apiUrl_getCustomizedCategoryList = 'https://localhost:44385/api/item/customized/category';
-      this.apiUrl_getCustomizedItem = 'https://localhost:44385/api/item/customized/item/';
-      this.apiUrl_getSelectedToppingList = 'https://localhost:44385/api/item/customized/selected-topping/';
-      this.apiUrl_getRecalculatedPrice = 'https://localhost:44385/api/item/customized/recalculatedPrize/paramsToRecalculatePrice?';
+      this.apiUrl_base = 'http://ydearimas-002-site1.ftempurl.com/api/item/';   
+      this.apiUrl_getItemCategoryList = this.apiUrl_base + 'categories';
+      this.apiUrl_getSpecialList = this.apiUrl_base + 'specials';
+      this.apiUrl_getItemsByCategoryId = this.apiUrl_base + 'items/';
+      this.apiUrl_getCustomizedCategoryList = this.apiUrl_base + 'customized/category';
+      this.apiUrl_getCustomizedItem = this.apiUrl_base + 'customized/item/';
+      this.apiUrl_getSelectedToppingList = this.apiUrl_base + 'customized/selected-topping/';
+      this.apiUrl_getRecalculatedPrice = this.apiUrl_base + 'customized/recalculatedPrize/paramsToRecalculatePrice?';
 
       this.header = new Headers({
         'Content-Type': 'application/json',
