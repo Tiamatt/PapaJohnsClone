@@ -24,7 +24,7 @@ export class ApiService{
         private _http: Http,
         private _router: Router
     ) {
-      this.apiUrl_base = 'http://ydearimas-002-site1.ftempurl.com/api/item/';   
+      this.apiUrl_base = 'https://PapaJohnsCloneApi.azurewebsites.net/api/item/';   
       this.apiUrl_getItemCategoryList = this.apiUrl_base + 'categories';
       this.apiUrl_getSpecialList = this.apiUrl_base + 'specials';
       this.apiUrl_getItemsByCategoryId = this.apiUrl_base + 'items/';
