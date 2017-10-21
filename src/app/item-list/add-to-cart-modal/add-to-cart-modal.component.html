@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
             <!-- <img [src]="'../../../assets/itemImages/'+ selectedItem.itemCategoryId + '_' + selectedItem.id + '.jpg'" [alt]="selectedItem.name"> -->
-            <img [src]="'./assets/itemImages/'+ selectedItem.itemCategoryId + '_' + selectedItem.id + '.jpg'" [alt]="selectedItem.name">
+            <img [src]="'../assets/itemImages/'+ selectedItem.itemCategoryId + '_' + selectedItem.id + '.jpg'" [alt]="selectedItem.name">
             <p class="description_M">{{selectedItem.description}}</p>
             <app-quantity-dropdown (onQuantityChangedOutput)="onQuantityChangedOutput($event)" [initialQuantity]="1"></app-quantity-dropdown>
             <app-price-box [price]="selectedItem.price"></app-price-box>
