@@ -13,7 +13,8 @@ export class ToppingBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.imageUrl = "../../../assets/toppingImages/"+ this.topping.toppingCategoryId + "_" + this.topping.id + ".png";
+    // this.imageUrl = "../../../assets/toppingImages/"+ this.topping.toppingCategoryId + "_" + this.topping.id + ".png";
+    this.imageUrl = "./assets/toppingImages/"+ this.topping.toppingCategoryId + "_" + this.topping.id + ".png";
   }
 
 }
