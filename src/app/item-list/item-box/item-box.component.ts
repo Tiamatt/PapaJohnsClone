@@ -16,7 +16,9 @@ export class ItemBoxComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.imageUrl = "../../../assets/itemImages/"+ this.item.itemCategoryId + "_" + this.item.id + ".jpg";
+    // publish-kali
+    //this.imageUrl = "../../../assets/itemImages/"+ this.item.itemCategoryId + "_" + this.item.id + ".jpg";
+    this.imageUrl = "./assets/itemImages/"+ this.item.itemCategoryId + "_" + this.item.id + ".jpg";
     if(this.item.itemCategoryId == 4)
       this.buttonName = "Add & Customize"; 
   }
