@@ -12,7 +12,7 @@ export class ItemListComponent implements OnInit {
   title: string = "Waiting for API...";
   itemArr: IItem[];
   categoryId: number;
-  carouselImageUrlArr = ['../../assets/carouselImages/main_1.jpg', '../../assets/carouselImages/main_2.jpg'];
+  carouselImageUrlArr = ['./assets/carouselImages/main_1.jpg', './assets/carouselImages/main_2.jpg'];
 
   constructor(
     private activatedRoute: ActivatedRoute,

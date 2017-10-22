@@ -13,9 +13,7 @@ export class ToppingBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // publish-kali
-    // this.imageUrl = "../../../assets/toppingImages/"+ this.topping.toppingCategoryId + "_" + this.topping.id + ".png";
-    this.imageUrl = "assets/toppingImages/"+ this.topping.toppingCategoryId + "_" + this.topping.id + ".png";
+    this.imageUrl = "./assets/toppingImages/"+ this.topping.toppingCategoryId + "_" + this.topping.id + ".jpg";
   }
 
 }

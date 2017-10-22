@@ -25,7 +25,7 @@ export class AddToCartModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.imageUrl = "../../../assets/itemImages/"+ this.selectedItem.itemCategoryId + "_" + this.selectedItem.id + ".jpg";
+    //this.imageUrl = "./assets/itemImages/"+ this.selectedItem.itemCategoryId + "_" + this.selectedItem.id + ".jpg";
     this.listenVariables();
     this.shoppingItem = {
       itemId: this.selectedItem.id,
