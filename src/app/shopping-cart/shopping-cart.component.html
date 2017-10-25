@@ -3,7 +3,6 @@
 
 <h4 *ngIf="shoppingItemArr.length==0" class="wrapper_M text-danger">Nothing in the shoppping cart</h4>
 
-
 <div class="container" class="wrapper_M">
     <div class="row" *ngFor="let item of shoppingItemArr">
         <div class="col-md-auto">
@@ -21,15 +20,9 @@
         </div>
     </div>
 </div>
-<div class="container" class="wrapper_M">
-        <div class="row">
-          <div class="col-2 grey_M"><h4>Subtotal:</h4></div>
-          <div class="col-4 grey_M"><h4>{{subtotal | currency:'USD':true}}</h4></div>
-          <div class="w-100"></div>
-          <div class="col-2 grey_M"><h4>Estimated tax:</h4></div>
-          <div class="col-4 grey_M"><h4>{{subtotal*0.05 | currency:'USD':true}}</h4></div>
-          <div class="w-100"></div>
-          <div class="col-2"><h4>Total:</h4></div>
-          <div class="col-4"><h4>{{subtotal + subtotal*0.05 | currency:'USD':true}}</h4></div>
-        </div>
-      </div>
+<div class="wrapper_M">
+    <h4 class="grey_M"><div class="priceSummary_M">Subtotal:</div>{{subtotal | currency:'USD':true}}</h4>
+    <h4 class="grey_M"><div class="priceSummary_M grey_M">Subtotal:</div>{{subtotal | currency:'USD':true}}</h4>
+    <h4 class="grey_M"><div class="priceSummary_M grey_M">Estimated tax:</div>{{subtotal*0.05 | currency:'USD':true}}</h4>
+    <h4><div class="priceSummary_M">Total:</div>{{subtotal + subtotal*0.05 | currency:'USD':true}}</h4>
+</div>
