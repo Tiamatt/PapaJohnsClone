@@ -2,8 +2,8 @@
 This [web application](https://tiamatt.github.io/PapaJohnsClone) is a light version of [PapaJohns website](https://www.papajohns.com/) built with Angular 4 + ASP.NET Web API + MS SQL Server 
 
 ## DEMO
-Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone)
-[![PapaJohnsCloneScreenshot1](http://kaliScreenshot)](./assets/otherImages/error.jpg)
+Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone) </br>
+[![PapaJohnsCloneScreenshot1](http://kaliScreenshot)](https://github.com/Tiamatt/PapaJohnsClone/blob/master/src/assets/otherImages/error.jpg?raw=true)
 
 ## Built With
 * Angular 4 (TypeScript)
@@ -12,8 +12,8 @@ Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone)
 * Boostrap v4.0.0-beta
 
 ## Getting Started
-Note that this seed project requires Node.js
-In order to start the project use:
+Note that this seed project requires Node.js installation. </br>
+In order to start the project folow the steps:
 ```bash
 # step 1. Go to Node.js official website and install it
 # check Node.js version (v8.5.0 or upper)
