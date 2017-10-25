@@ -2,7 +2,7 @@
 This [web application](https://tiamatt.github.io/PapaJohnsClone) is a light version of [PapaJohns website](https://www.papajohns.com/) built with Angular 4 + ASP.NET Web API + MS SQL Server 
 
 ## DEMO
-Live DEMO [here] (https://tiamatt.github.io/PapaJohnsClone)
+Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone)
 [![PapaJohnsCloneScreenshot1](http://kaliScreenshot)](./assets/otherImages/error.jpg)
 
 ## Built With
@@ -36,5 +36,5 @@ $ ng serve
 ```
 
 ## API and database
-This project is using PapaJohnsCloneApi web service built with .NET Core 2.0 Framework (C#) and deployed to Microsoft Azure Cloud </br>
+This project is using PapaJohnsCloneApi web service built with ASP.NET Web API (.NET Core 2.0 Framework and C#) and deployed to Microsoft Azure Cloud. </br>
 See [PapaJohnsCloneApi repository](https://github.com/Tiamatt/PapaJohnsCloneApi) for details.

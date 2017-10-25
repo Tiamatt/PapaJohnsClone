@@ -29,8 +29,8 @@ export class CustomizedItemComponent implements OnInit {
   selectedSize: number; // get from API
   selectedQuantity: number = 1;
   recalculatedPrice: number;
-
   shoppingItemArr: IShoppingItem[] = [];
+  msg: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -170,9 +170,18 @@ export class CustomizedItemComponent implements OnInit {
       price: this.recalculatedPrice,
       description: this.getDescription()
     };
-    this.shoppingItemArr.push(shoppingItem);
-    this.variableListenerService.shoppingItemArrListener.next(this.shoppingItemArr);
-    alert("Item added to your shopping cart");
+    let isAlreadyExist = this.shoppingItemArr.find(x=> x.itemId == shoppingItem.itemId && x.description == shoppingItem.description);
+    if (typeof isAlreadyExist === 'undefined')
+    {
+      this.shoppingItemArr.push(shoppingItem);
+      this.variableListenerService.shoppingItemArrListener.next(this.shoppingItemArr);
+      this.msg = "Item added to your shopping cart";
+    }
+    else
+    {
+      this.msg = "You have already added this item in your shopping cart";
+    }
+    document.getElementById("openModalAlert").click();
   }
 
   getDescription(){

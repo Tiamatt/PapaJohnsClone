@@ -17,6 +17,7 @@ export class AddToCartModalComponent implements OnInit {
   shoppingItemArr: IShoppingItem[] = [];
   itemGuid: string = this.helperService.generateGuid();
   shoppingItem: IShoppingItem;
+  msg: string;
 
   constructor(
     private variableListenerService: VariableListenerService,
@@ -25,7 +26,6 @@ export class AddToCartModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.imageUrl = "./assets/itemImages/"+ this.selectedItem.itemCategoryId + "_" + this.selectedItem.id + ".jpg";
     this.listenVariables();
     this.shoppingItem = {
       itemId: this.selectedItem.id,
@@ -39,10 +39,20 @@ export class AddToCartModalComponent implements OnInit {
   }
 
  onAddToShoppingCart(){
+   let isAlreadyExist = this.shoppingItemArr.find(x=> x.itemId == this.shoppingItem.itemId && x.description == this.shoppingItem.description);
+   if (typeof isAlreadyExist === 'undefined')
+   {
     this.shoppingItemArr.push(this.shoppingItem);
     this.variableListenerService.shoppingItemArrListener.next(this.shoppingItemArr);
-    alert("Item added to your shopping cart");
+    this.msg = "Item added to your shopping cart";
+   }
+   else
+   {
+    this.msg = "You have already added this item in your shopping cart. You can change the quantity in shopping list.";
+   }
+   document.getElementById("openModalAlert"+this.selectedItem.id).click();
   }
+
 
   listenVariables(){
     this.variableListenerService.shoppingItemArrListener.subscribe(

@@ -21,3 +21,7 @@
       </div>
     </div>
   </div>
+
+
+  <app-modal-alert [message]="msg" [id]="selectedItem.id"></app-modal-alert>
+  <button [id]="'openModalAlert'+selectedItem.id" hidden data-toggle="modal" [attr.data-target]="'#ModalAlert'+selectedItem.id">Open Modal Alert (hidden)</button>

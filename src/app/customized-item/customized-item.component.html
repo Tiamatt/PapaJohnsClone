@@ -25,3 +25,6 @@
 
 <!-- Footer with "Previous", "Next", "Add to Card" buttons  -->
 <app-customized-item-footer [currentNavId]="navId" (onCustomizedItemFooterOutput)="onCustomizedItemFooterOutput($event)"></app-customized-item-footer>
+
+<app-modal-alert [message]="msg" [id]="0"></app-modal-alert>
+<button id="openModalAlert" hidden data-toggle="modal" data-target="#ModalAlert0">Open Modal Alert (hidden)</button>

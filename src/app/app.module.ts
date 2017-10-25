@@ -28,6 +28,7 @@ import { QuantityDropdownComponent } from './shared/components/quantity-dropdown
 import { PriceBoxComponent } from './shared/components/price-box/price-box.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ModalAlertComponent } from './shared/components/modal-alert/modal-alert.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     PriceBoxComponent,
     ShoppingCartComponent,
     ErrorPageComponent,
+    ModalAlertComponent,
   ],
   imports: [
     BrowserModule,
