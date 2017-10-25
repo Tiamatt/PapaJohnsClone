@@ -5,7 +5,6 @@ import { VariableListenerService } from '../../shared/services/variableListener.
 // models
 import { IItem } from '../../shared/models/IItem.model';
 import { IShoppingItem } from '../../shared/models/IShoppingItem.model';
-import { HelperService } from '../../shared/services/helper.service';
 
 @Component({
   selector: 'app-add-to-cart-modal',
@@ -15,13 +14,11 @@ import { HelperService } from '../../shared/services/helper.service';
 export class AddToCartModalComponent implements OnInit {
   @Input() selectedItem: IItem;
   shoppingItemArr: IShoppingItem[] = [];
-  itemGuid: string = this.helperService.generateGuid();
   shoppingItem: IShoppingItem;
   msg: string;
 
   constructor(
     private variableListenerService: VariableListenerService,
-    private helperService: HelperService,
     private router: Router
   ) { }
 
@@ -29,7 +26,6 @@ export class AddToCartModalComponent implements OnInit {
     this.listenVariables();
     this.shoppingItem = {
       itemId: this.selectedItem.id,
-      itemGuid: this.itemGuid,
       itemCategoryId: this.selectedItem.itemCategoryId,
       name: this.selectedItem.name,
       quantity: 1,

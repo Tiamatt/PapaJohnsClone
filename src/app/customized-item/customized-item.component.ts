@@ -10,7 +10,6 @@ import { ITopping } from '../shared/models/ITopping.model';
 import { IIdName } from '../shared/models/IIdName.model';
 import { IParamsToRecalculatePrice } from '../shared/models/IParamsToRecalculatePrice.model';
 import { IShoppingItem } from '../shared/models/IShoppingItem.model';
-import { HelperService } from '../shared/services/helper.service';
 
 @Component({
   selector: 'app-customized-item',
@@ -35,8 +34,7 @@ export class CustomizedItemComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
-    private variableListenerService: VariableListenerService,
-    private helperService: HelperService
+    private variableListenerService: VariableListenerService
   ) { } 
   
   ngOnInit() {
@@ -163,7 +161,6 @@ export class CustomizedItemComponent implements OnInit {
   {
     let shoppingItem: IShoppingItem = {
       itemId: this.itemData.itemId,
-      itemGuid: this.helperService.generateGuid(),
       itemCategoryId: this.itemData.itemCategoryId,
       name: this.itemData.itemName,
       quantity: (this.selectedQuantity == null)? 1: this.selectedQuantity,
@@ -175,11 +172,11 @@ export class CustomizedItemComponent implements OnInit {
     {
       this.shoppingItemArr.push(shoppingItem);
       this.variableListenerService.shoppingItemArrListener.next(this.shoppingItemArr);
-      this.msg = "Item added to your shopping cart";
+      this.msg = "Item added to your shopping cart.";
     }
     else
     {
-      this.msg = "You have already added this item in your shopping cart";
+      this.msg = "You have already added this item in your shopping cart. You can change the quantity in shopping list.";
     }
     document.getElementById("openModalAlert").click();
   }

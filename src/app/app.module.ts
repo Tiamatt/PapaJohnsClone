@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 // services
 import { ApiService } from './shared/services/api.service';
 import { VariableListenerService } from './shared/services/variableListener.service';
-import { HelperService } from './shared/services/helper.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -57,7 +56,7 @@ import { ModalAlertComponent } from './shared/components/modal-alert/modal-alert
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ ApiService, VariableListenerService, HelperService],
+  providers: [ ApiService, VariableListenerService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

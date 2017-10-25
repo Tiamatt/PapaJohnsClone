@@ -29,7 +29,6 @@ export class CustomizedItemFooterComponent implements OnInit {
     this.variableListenerService.customizedItemNavIdListener.next(this.currentNavId);
   }
 
-  // pass here _selectedQuantity and IsAddToCartChecked // kali
   onAddToCart(){
     this.onCustomizedItemFooterOutput.emit({isAddToCartChecked: true, quantity: this.selectedQuantity});
   }
