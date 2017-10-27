@@ -1,19 +1,31 @@
 # PapaJohnsClone app
-This [web application](https://tiamatt.github.io/PapaJohnsClone) is a light version of [PapaJohns website](https://www.papajohns.com/) built with Angular 4 + ASP.NET Web API + MS SQL Server 
+This [web application](https://tiamatt.github.io/PapaJohnsClone) is a light version of papajohns.com built with Angular and ASP.NET Core Web API. User can view items by categories, add selected items to shopping cart, customize pizza and redirect to shopping cart.
+
 
 ## DEMO
 Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone) </br>
-[![PapaJohnsCloneScreenshot1](http://kaliScreenshot)](https://github.com/Tiamatt/PapaJohnsClone/blob/master/src/assets/otherImages/error.jpg?raw=true)
+![PapaJohnsCloneScreenshot](/src/assets/otherImages/error.jpg?raw=true "PapaJohnsClone Screenshot")
+
+
+## Features
+* Fully responsive design
+* Using Subject (Rx observable)
+* Shared components
+
 
 ## Built With
 * Angular 4 (TypeScript)
-* ASP.NET Web API Core 2.0(C#)
+* Angular CLI v1.4.2
+* Bootstrap v4.0.0-beta
+* Font Awesome v4.7.0
+* Google fonts
+* ASP.NET Web API (.NET Core 2.0 Framework + C#)
 * MS SQL Server
-* Boostrap v4.0.0-beta
+
 
 ## Getting Started
-Note that this seed project requires Node.js installation. </br>
-In order to start the project folow the steps:
+Note, you need to install Node.js </br>
+Follow the steps:
 ```bash
 # step 1. Go to Node.js official website and install it
 # check Node.js version (v8.5.0 or upper)
@@ -36,5 +48,6 @@ $ ng serve
 ```
 
 ## API and database
-This project is using PapaJohnsCloneApi web service built with ASP.NET Web API (.NET Core 2.0 Framework and C#) and deployed to Microsoft Azure Cloud. </br>
-See [PapaJohnsCloneApi repository](https://github.com/Tiamatt/PapaJohnsCloneApi) for details.
+This project is using PapaJohnsCloneApi web service and MS SQL database. </br>
+The web service was built with ASP.NET Web API (.NET Core 2.0 Framework and C#) and deployed to Microsoft Azure Cloud. See  [PapaJohnsCloneApi repository](https://github.com/Tiamatt/PapaJohnsCloneApi) for details. </br>
+Database was built with MS SQL and deployed to Microsoft Azure Cloud. </br>
