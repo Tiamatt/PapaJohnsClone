@@ -4,7 +4,8 @@ This [web application](https://tiamatt.github.io/PapaJohnsClone) is a light vers
 
 ## DEMO
 Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone) </br>
-![PapaJohnsCloneScreenshot](/src/assets/otherImages/error.jpg?raw=true "PapaJohnsClone Screenshot")
+</br>
+![PapaJohnsCloneScreenshot](/src/assets/otherImages/screenshot.png?raw=true "PapaJohnsClone screenshot")
 
 
 ## Features
@@ -24,7 +25,7 @@ Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone) </br>
 
 
 ## Getting Started
-Note, you need to install Node.js </br>
+Note, this project requires Node.js installation.</br>
 Follow the steps:
 ```bash
 # step 1. Go to Node.js official website and install it
