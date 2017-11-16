@@ -50,5 +50,5 @@ $ ng serve
 
 ## API and database
 This project is using PapaJohnsCloneApi web service and MS SQL database. </br>
-The web service was built with ASP.NET Web API (.NET Core 2.0 Framework and C#) and deployed to Microsoft Azure Cloud. See  [PapaJohnsCloneApi repository](https://github.com/Tiamatt/PapaJohnsCloneApi) for details. </br>
-Database was built with MS SQL and deployed to Microsoft Azure Cloud. </br>
+The web service was built with ASP.NET Web API (.NET Core 2.0 Framework and C#) and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). See  [PapaJohnsCloneApi repository](https://github.com/Tiamatt/PapaJohnsCloneApi) for details. </br>
+Database was built with MS SQL and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). </br>
