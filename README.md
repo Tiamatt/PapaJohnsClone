@@ -49,6 +49,6 @@ $ ng serve
 ```
 
 ## API and database
-This project is using DotNetApisForAngularProjects web service and MS SQL database. </br>
-The web service was built with ASP.NET Web API (.NET Core 2.1 Framework and C#) and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). See  [DotNetApisForAngularProjects repository](https://github.com/Tiamatt/DotNetApisForAngularProjects) for details. (migrated from former PapaJohnsCloneApi project) </br>
-Database was built with MS SQL and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). </br>
+This project is using DotNetApisForAngularProjects RESTful web service and MS SQL database. </br>
+* The web service was built with ASP.NET Web API (.NET Core 2.1 Framework and C#) and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). See  [DotNetApisForAngularProjects repository](https://github.com/Tiamatt/DotNetApisForAngularProjects) for details. (migrated from former PapaJohnsCloneApi project) </br>
+* Database was built with MS SQL and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). </br>
