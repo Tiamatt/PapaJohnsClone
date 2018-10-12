@@ -1,9 +1,9 @@
 # PapaJohnsClone app
-This [web application](https://tiamatt.github.io/PapaJohnsClone) is a light version of papajohns.com built with Angular and ASP.NET Core Web API. User can view items by categories, add selected items to shopping cart, customize pizza and redirect to shopping cart.
+This [web application](http://papajohnsclone.herokuapp.com/) is a light version of papajohns.com built with Angular and ASP.NET Core Web API. User can view items by categories, add selected items to shopping cart, customize pizza and redirect to shopping cart.
 
 
 ## DEMO
-Live DEMO [here](https://tiamatt.github.io/PapaJohnsClone) </br>
+Live DEMO [here](http://papajohnsclone.herokuapp.com/) </br>
 </br>
 ![PapaJohnsCloneScreenshot](/src/assets/otherImages/screenshot.png?raw=true "PapaJohnsClone screenshot")
 
@@ -49,6 +49,6 @@ $ ng serve
 ```
 
 ## API and database
-This project is using PapaJohnsCloneApi web service and MS SQL database. </br>
-The web service was built with ASP.NET Web API (.NET Core 2.0 Framework and C#) and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). See  [PapaJohnsCloneApi repository](https://github.com/Tiamatt/PapaJohnsCloneApi) for details. </br>
+This project is using DotNetApisForAngularProjects web service and MS SQL database. </br>
+The web service was built with ASP.NET Web API (.NET Core 2.1 Framework and C#) and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). See  [DotNetApisForAngularProjects repository](https://github.com/Tiamatt/DotNetApisForAngularProjects) for details. (migrated from former PapaJohnsCloneApi project) </br>
 Database was built with MS SQL and deployed to SmarterAsp.Net (moved from Microsoft Azure Cloud). </br>
