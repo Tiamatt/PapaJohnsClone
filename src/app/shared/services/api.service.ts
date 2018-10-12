@@ -24,7 +24,7 @@ export class ApiService{
         private _http: Http,
         private _router: Router
     ) {
-      this.apiUrl_base = 'https://www.tiamatt.com/api/item/';   
+      this.apiUrl_base = 'http://www.tiamatt.com/api/ppjc/';   
       this.apiUrl_getItemCategoryList = this.apiUrl_base + 'categories';
       this.apiUrl_getSpecialList = this.apiUrl_base + 'specials';
       this.apiUrl_getItemsByCategoryId = this.apiUrl_base + 'items/';
