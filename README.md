@@ -3,7 +3,6 @@ This [web application](http://papajohnsclone.herokuapp.com/) is a light version 
 
 
 ## DEMO
-Live DEMO [here](http://papajohnsclone.herokuapp.com/) </br>
 </br>
 ![PapaJohnsCloneScreenshot](/src/assets/otherImages/screenshot.png?raw=true "PapaJohnsClone screenshot")
 
